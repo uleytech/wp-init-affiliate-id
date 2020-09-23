@@ -1,0 +1,1 @@
+# wp-init-affiliate-id
