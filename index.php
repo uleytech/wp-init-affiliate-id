@@ -6,8 +6,10 @@
  * License: MIT
  */
 
+require_once(__DIR__ . '/options.php');
+
 function init_aff_cookie() {
-    $refId = $_GET['aid'] ?? '';
+    $refId = $_GET['aid'] ?? null;
     $affId = 65514;
     if (!isset($_COOKIE['aid'])) {
         $cid = $refId ?? $affId;
