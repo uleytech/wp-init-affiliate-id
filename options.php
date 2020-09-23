@@ -26,6 +26,7 @@ function register_settings()
     add_settings_section('api_settings', 'ID Settings', 'wp_init_affiliate_id_section_text', 'wp_init_affiliate_id');
     add_settings_field('wp_init_affiliate_idd_setting_aff_id', 'Affiliate ID', 'wp_init_affiliate_id_setting_aff_id', 'wp_init_affiliate_id', 'api_settings');
     add_settings_field('wp_init_affiliate_idd_setting_ref_id', 'Referrer ID', 'wp_init_affiliate_id_setting_ref_id', 'wp_init_affiliate_id', 'api_settings');
+    add_settings_field('wp_init_affiliate_idd_setting_expired', 'Expired', 'wp_init_affiliate_id_setting_expired', 'wp_init_affiliate_id', 'api_settings');
 }
 
 add_action('admin_init', 'register_settings');
@@ -54,4 +55,11 @@ function wp_init_affiliate_id_setting_ref_id()
 {
     $options = get_option('wp_init_affiliate_id_options');
     echo 'https://' . $_SERVER['HTTP_HOST'] . '/?aid=' . esc_attr($options['aff_id']);
+}
+
+function wp_init_affiliate_id_setting_expired()
+{
+    $options = get_option('wp_init_affiliate_id_options');
+    echo "<input id='wp_init_affiliate_id_setting_expired' name='wp_init_affiliate_id_options[expired]' type='text' value='" . esc_attr($options['expired']) . "' />
+        <span>day(s)</span>";
 }
