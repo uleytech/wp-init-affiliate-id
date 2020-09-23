@@ -1,1 +1,2 @@
-# wp-init-affiliate-id
+# Init Affiliate ID
+WordPress Init Affiliate ID
