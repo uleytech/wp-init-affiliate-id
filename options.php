@@ -25,8 +25,9 @@ function register_settings()
     register_setting('wp_init_affiliate_id_options', 'wp_init_affiliate_id_options', 'wp_init_affiliate_id_options_validate');
     add_settings_section('api_settings', 'ID Settings', 'wp_init_affiliate_id_section_text', 'wp_init_affiliate_id');
     add_settings_field('wp_init_affiliate_idd_setting_aff_id', 'Affiliate ID', 'wp_init_affiliate_id_setting_aff_id', 'wp_init_affiliate_id', 'api_settings');
+    add_settings_field('wp_init_affiliate_idd_setting_expired_at', 'Expired', 'wp_init_affiliate_id_setting_expired_at', 'wp_init_affiliate_id', 'api_settings');
     add_settings_field('wp_init_affiliate_idd_setting_ref_id', 'Referrer ID', 'wp_init_affiliate_id_setting_ref_id', 'wp_init_affiliate_id', 'api_settings');
-    add_settings_field('wp_init_affiliate_idd_setting_expired', 'Expired', 'wp_init_affiliate_id_setting_expired', 'wp_init_affiliate_id', 'api_settings');
+
 }
 
 add_action('admin_init', 'register_settings');
@@ -36,6 +37,10 @@ function wp_init_affiliate_id_options_validate($input)
     $newinput['aff_id'] = trim($input['aff_id']);
     if (!preg_match('/^[0-9]+$/i', $newinput['aff_id'])) {
         $newinput['aff_id'] = '';
+    }
+    $newinput['expired_at'] = trim($input['expired_at']);
+    if (!preg_match('/^[0-9]+$/i', $newinput['expired_at'])) {
+        $newinput['expired_at'] = '';
     }
     return $newinput;
 }
@@ -57,9 +62,9 @@ function wp_init_affiliate_id_setting_ref_id()
     echo 'https://' . $_SERVER['HTTP_HOST'] . '/?aid=' . esc_attr($options['aff_id']);
 }
 
-function wp_init_affiliate_id_setting_expired()
+function wp_init_affiliate_id_setting_expired_at()
 {
     $options = get_option('wp_init_affiliate_id_options');
-    echo "<input id='wp_init_affiliate_id_setting_expired' name='wp_init_affiliate_id_options[expired]' type='text' value='" . esc_attr($options['expired']) . "' />
+    echo "<input id='wp_init_affiliate_id_setting_expired_at' name='wp_init_affiliate_id_options[expired_at]' type='number' value='" . esc_attr($options['expired_at']) . "' />
         <span>day(s)</span>";
 }

@@ -13,10 +13,10 @@ function init_aff_cookie()
     $refId = $_GET['aid'] ?? null;
     $options = get_option('wp_init_affiliate_id_options');
     $affId = esc_attr($options['aff_id']) ?? 65514;
-    $expired = esc_attr($options['expired']) ?? 30;
+    $expiredAt = esc_attr($options['expired_at']) ?? 30;
     if (!isset($_COOKIE['aid'])) {
         $cid = $refId ?? $affId;
-        setcookie('aid', $cid, time() + 60 * 60 * 24 * $expired, COOKIEPATH, COOKIE_DOMAIN, false);
+        setcookie('aid', $cid, time() + 60 * 60 * 24 * $expiredAt, COOKIEPATH, COOKIE_DOMAIN, false);
     }
 }
 
