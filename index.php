@@ -1,10 +1,13 @@
 <?php
 /**
  * Plugin Name: Init Affiliate ID
- * Version: 1.0.1
+ * Version: 1.0.4
+ * Requires at least: 5.2
+ * Requires PHP: 7.2
  * Plugin URI: https://github.com/uleytech/wp-init-affiliate-id
  * Description: Provides functionality for WordPress.
  * Author: Oleksandr Krokhin
+ * Author URI: https://www.krohin.com
  * License: MIT
  */
 
