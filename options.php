@@ -10,7 +10,7 @@ add_action('admin_menu', 'iai_add_settings_page');
 function iai_render_plugin_settings_page()
 {
     ?>
-    <h2>Init Affiliate ID Settings</h2>
+    <h2><?php _e('Init Affiliate ID Settings', 'wp-init-affiliate-id') ?></h2>
     <form action="options.php" method="post">
         <?php
         settings_fields('wp_init_affiliate_id_options');
@@ -47,7 +47,7 @@ function wp_init_affiliate_id_options_validate($input)
 
 function wp_init_affiliate_id_section_text()
 {
-    echo '<p>Here you can set all the options for using the Post Affiliate Pro</p>';
+    echo '<p>' . _e('Here you can set all the options for using the Post Affiliate Pro', 'wp-init-affiliate-id') . '</p>';
 }
 
 function wp_init_affiliate_id_setting_aff_id()
@@ -66,5 +66,5 @@ function wp_init_affiliate_id_setting_expired_at()
 {
     $options = get_option('wp_init_affiliate_id_options');
     echo "<input id='wp_init_affiliate_id_setting_expired_at' name='wp_init_affiliate_id_options[expired_at]' type='number' value='" . esc_attr($options['expired_at']) . "' />
-        <span>day(s)</span>";
+        <span>" . _e('day(s)', 'wp-init-affiliate-id') . "</span>";
 }
