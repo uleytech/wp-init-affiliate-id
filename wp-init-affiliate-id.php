@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Init Affiliate ID
- * Version: 1.0.6
+ * Version: 1.0.7
  * Requires at least: 5.2
  * Requires PHP: 7.2
  * Plugin URI: https://github.com/uleytech/wp-init-affiliate-id
