@@ -2,7 +2,7 @@
 
 function iai_add_settings_page()
 {
-    add_options_page(_('Init Affiliate ID', 'wp-init-affiliate-id'), _('Init Affiliate ID', 'wp-init-affiliate-id'), 'manage_options', 'wp-init-affiliate-id', 'iai_render_plugin_settings_page');
+    add_options_page(__('Init Affiliate ID', 'wp-init-affiliate-id'), __('Init Affiliate ID', 'wp-init-affiliate-id'), 'manage_options', 'wp-init-affiliate-id', 'iai_render_plugin_settings_page');
 }
 
 add_action('admin_menu', 'iai_add_settings_page');
