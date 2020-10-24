@@ -53,18 +53,18 @@ function wp_init_affiliate_id_section_text()
 function wp_init_affiliate_id_setting_aff_id()
 {
     $options = get_option('wp_init_affiliate_id_options');
-    echo "<input id='wp_init_affiliate_id_setting_aff_id' name='wp_init_affiliate_id_options[aff_id]' type='text' value='" . esc_attr($options['aff_id']) . "' />";
+    echo "<input id='wp_init_affiliate_id_setting_aff_id' name='wp_init_affiliate_id_options[aff_id]' type='text' class='' value='" . esc_attr($options['aff_id'] ?? '') . "' />";
 }
 
 function wp_init_affiliate_id_setting_ref_id()
 {
     $options = get_option('wp_init_affiliate_id_options');
-    echo 'https://' . $_SERVER['HTTP_HOST'] . '/?aid=' . esc_attr($options['aff_id']);
+    echo 'https://' . $_SERVER['HTTP_HOST'] . '/?aid=' . esc_attr($options['aff_id'] ?? 'xxxxx');
 }
 
 function wp_init_affiliate_id_setting_expired_at()
 {
     $options = get_option('wp_init_affiliate_id_options');
-    echo "<input id='wp_init_affiliate_id_setting_expired_at' name='wp_init_affiliate_id_options[expired_at]' type='number' value='" . esc_attr($options['expired_at']) . "' />
+    echo "<input id='wp_init_affiliate_id_setting_expired_at' name='wp_init_affiliate_id_options[expired_at]' type='number' class='small-text'  value='" . esc_attr($options['expired_at'] ?? '') . "' />
         <span>" . __('day(s)', 'wp-init-affiliate-id') . "</span>";
 }
