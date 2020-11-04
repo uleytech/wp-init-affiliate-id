@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Init Affiliate ID
- * Version: 1.0.13
+ * Version: 1.1.0
  * Requires at least: 5.2
  * Requires PHP: 7.2
  * Plugin URI: https://github.com/uleytech/wp-init-affiliate-id
@@ -13,7 +13,30 @@
  * License: MIT
  */
 
-require_once(__DIR__ . '/options.php');
+require_once __DIR__ . '/options.php';
+require_once __DIR__ . '/update.php';
+
+if (is_admin()) {
+    new IaiUpdater(
+        __FILE__,
+        'uleytech',
+        "wp-init-affiliate-id"
+    );
+}
+
+function iaiSettingsLink($links)
+{
+    $url = esc_url(add_query_arg(
+        'page',
+        'wp-init-affiliate-id',
+        get_admin_url() . 'options-general.php'
+    ));
+    $link[] = "<a href='$url'>" . __('Settings') . '</a>';
+
+
+    return array_merge($link, $links);
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'iaiSettingsLink');
 
 function init_aff_cookie()
 {
