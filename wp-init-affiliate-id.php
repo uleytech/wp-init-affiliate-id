@@ -32,13 +32,12 @@ function iaiSettingsLink($links)
         get_admin_url() . 'options-general.php'
     ));
     $link[] = "<a href='$url'>" . __('Settings') . '</a>';
-
-
     return array_merge($link, $links);
 }
+
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'iaiSettingsLink');
 
-function init_aff_cookie()
+function initAffCookie()
 {
     $refId = $_GET['aid'] ?? null;
     $options = get_option('wp_init_affiliate_id_options');
@@ -49,4 +48,5 @@ function init_aff_cookie()
         setcookie('aid', $cid, time() + 60 * 60 * 24 * $expiredAt, COOKIEPATH, COOKIE_DOMAIN, false);
     }
 }
-add_action('init', 'init_aff_cookie');
+
+add_action('init', 'initAffCookie');
